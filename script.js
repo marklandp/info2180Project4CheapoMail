@@ -7,13 +7,13 @@ $(function(){
     $("#homepage").hide();
     $("#compose").hide();
     $("#create-btn").hide();
-    $("#login-btn").click(checkLogin);          //line 34
-    $("#new-btn").click(newMsg);                //line 297
-    $("#create-btn").click(regUser);            //line 190
-    $("#logout-btn").click(signOut);            //line 20
-    $("#send-btn").click(checkMessage);         //line 304
-    $("#register-btn").click(checkRegister);    //line 196  
-    $("#sync").click(initInbox);                //line 133
+    $("#login-btn").click(checkLogin);          //line 58
+    $("#new-btn").click(newMsg);                //line 317
+    $("#create-btn").click(regUser);            //line 214
+    $("#logout-btn").click(signOut);            //line 46
+    $("#send-btn").click(checkMessage);         //line 324
+    $("#register-btn").click(checkRegister);    //line 220  
+    $("#sync").click(initInbox);                //line 157
     $("#new-btn").hover(function () {
         this.src = 'external/composehover.png';
         var id=$(this).attr('id');
@@ -52,8 +52,6 @@ function signOut() {
                 $("#compose").hide();
                 $("#reg-block").hide();
             });
-
-    //$("#create-btn").show();
 };
 
 //verifies form fields are not empty. Any empty field is given a red background

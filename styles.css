@@ -1,0 +1,285 @@
+
+body {
+    background: url('http://i.imgur.com/Eor57Ae.jpg') no-repeat fixed center center;
+    background-size: cover;
+    font-family: Montserrat, sans-serif;
+}
+
+#homepage {
+    width: 770px;
+}
+
+.user {
+    font-family: serif;
+    font-size: 24px;
+    color: #ff656c;
+}
+
+#compose {
+    width: 570px;
+}
+
+#main {
+    width: 870px;
+    padding: 20px 20px 5px 20px;
+    background: #fff;
+    margin: 80px auto;
+    border-radius: 5px;
+    border-top: 5px solid #ff656c;
+}
+
+.login-block {
+    width: 570px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ff656c;
+    margin: 20px auto;
+}
+
+.admin-btn {
+    /*width: 100px;*/
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+
+.admin-btn:hover {
+    background: #ff7b81;
+}
+
+.login-block h1 {
+    font-family: sans-serif;
+    text-align: left;
+    color: #aaa;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 320px;
+}
+
+.login-block input {
+    width: 470px;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login-block input#fname {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#fname:focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#lname {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#lname:focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#username {
+    background: #fff url('id.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#username:focus {
+    background: #fff url('id.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#conf-password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#conf-password:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#msg-recipients {
+    margin-bottom: 0px;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    padding: 0 20px 0 10px;
+    outline: none;
+}
+
+textarea:active, textarea:focus {
+    border: 1px solid #ff656c;
+} 
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.input-btn {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+
+.input-btn:hover {
+    background: #ff7b81;
+}
+
+.input-btn#send-btn {
+	width: 75px;
+        padding: 0px 10px 0px 10px;
+}
+
+.input-btn#logout-btn {
+	width: 125px;
+        padding: 0px 10px 0px 10px;
+}
+
+.err {
+    color:red;
+}
+
+table {
+    width:100%;
+    margin: 5px auto 20px auto;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding-left: 10px;
+    font-weight: normal;
+    font-size: 18px;
+    background-color: #ff7b81;
+    color: #fff;
+    height: 30px;
+}
+th#from {
+    border-top-left-radius: 5px;
+}
+
+th#body {
+    border-top-right-radius: 5px;
+}
+
+tr:hover {
+    background-color: #ff7b81;
+}
+
+tr:nth-of-type(even) { 
+  background: #eee; 
+}
+
+tr:nth-of-type(even):hover { 
+  background: #ff7b81; 
+}
+
+.from {
+    width: 14%;
+}
+
+.subject {
+    width: 24%;
+}
+
+.body {
+    width: 60%;
+}
+
+#delimiter {
+    font-size: 10px;
+    color: #aaa;
+}
+
+.highlight {
+    background-color: #ff7b81;
+}
+
+.read {
+    font-weight: normal;
+    height: 50px;
+}
+
+.notRead {
+    font-weight: bold;
+    height: 50px;
+}
+
+.numMsg {
+    font-style: italic;
+    color: red;
+    text-decoration: blink;
+}
+
+p#header {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    font-style: italic;
+    font-family: Monotype Corsiva, serif;
+    margin: 0px;
+}
+
+p#footer {
+    text-align: right;
+    font-family: serif;
+    color: #fff;
+    font-size: 14px;
+    background-color: #ff656c;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 0px;
+}

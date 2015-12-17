@@ -1,4 +1,5 @@
 <?php
+/*this file validates username and password against database*/
 
 include 'connect.php';
 
@@ -52,4 +53,3 @@ if ($_SERVER["REQUEST_METHOD"] === "GET")
         session_destroy();
     }
 }
-?>

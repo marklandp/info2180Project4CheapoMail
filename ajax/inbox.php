@@ -1,4 +1,7 @@
 <?php
+/*
+ *Loads the currently logged in user's inbox. Last 10 messages received or most recent 10  
+ */
 
 include 'connect.php';
 
@@ -15,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         
         if (isset($id) && !empty($id)){
                 
-                $query_messages = $conn->prepare("SELECT * FROM message WHERE recipient_id=:recipient_id ORDER BY `id` DESC"); // finds message for the user
+                $query_messages = $conn->prepare("SELECT * FROM message WHERE recipient_id=:recipient_id ORDER BY `id` DESC limit 10"); // finds message for the user
                 $query_messages->bindParam(':recipient_id', $id);
                 $query_messages->execute();
 

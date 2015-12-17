@@ -1,26 +1,50 @@
 
+ //This file performs all ajax based requests and implements all button functions. 
+ 
+
 $(function(){
     $("#reg-block").hide();
     $("#homepage").hide();
     $("#compose").hide();
     $("#create-btn").hide();
-    $("#login-btn").click(checkLogin);
-    $("#new-btn").click(newMsg);
-    $("#create-btn").click(regUser);
-    $("#logout-btn").click(signOut);
-    $("#send-btn").click(checkMessage);
-    $("#register-btn").click(checkRegister);
-    $("#sync").click(initInbox);
-    
+    $("#login-btn").click(checkLogin);          //line 34
+    $("#new-btn").click(newMsg);                //line 297
+    $("#create-btn").click(regUser);            //line 190
+    $("#logout-btn").click(signOut);            //line 20
+    $("#send-btn").click(checkMessage);         //line 304
+    $("#register-btn").click(checkRegister);    //line 196  
+    $("#sync").click(initInbox);                //line 133
+    $("#new-btn").hover(function () {
+        this.src = 'external/composehover.png';
+        var id=$(this).attr('id');
+        $("#" + id).addClass('hover');
+    }, function () {
+        this.src = 'external/compose.png';
+        var id=$(this).attr('id');
+        $("#" + id).removeClass('hover');
+    });
+    $("#create-btn").hover(function () {
+        this.src = 'external/new-user-hover.png';
+        var id=$(this).attr('id');
+        $("#" + id).addClass('hover');
+    }, function () {
+        this.src = 'external/new-user.png';
+        var id=$(this).attr('id');
+        $("#" + id).removeClass('hover');
+    });
+    $("#sync").hover(function () {
+        this.src = 'external/synchover.png';
+        var id=$(this).attr('id');
+        $("#" + id).addClass('hover');
+    }, function () {
+        this.src = 'external/sync.png';
+        var id=$(this).attr('id');
+        $("#" + id).removeClass('hover');
+    });
 });
 
-function newMsg() {
-    $("#homepage").fadeOut(500);
-    $("#compose").fadeIn(2500);
-};
-
 function signOut() {
-    var xr = $.ajax("logout.php")
+    var xr = $.ajax("ajax/logout.php")
             .done(function() {
                 //console.log(xr);
                 $("#login-block").fadeIn(2000);
@@ -32,6 +56,7 @@ function signOut() {
     //$("#create-btn").show();
 };
 
+//verifies form fields are not empty. Any empty field is given a red background
 function checkLogin() {
     var username = document.forms["signInForm"]["username"],
         password = document.forms["signInForm"]["password"],
@@ -39,7 +64,6 @@ function checkLogin() {
         uerr = $("#uerr"), perr = $("#perr"),
         err = [uerr,perr],
         valid=true;
-    // add validation
      
     for(var i=0;i<check.length;i++)
     {
@@ -65,10 +89,10 @@ function checkLogin() {
 
 }
 
-
+//actual login function
 function doLogin(username, password) {
     var xhr = $.ajax({
-        url: "login.php",
+        url: "ajax/login.php",
         type: "POST",
         data: {
                 username: username,
@@ -79,15 +103,13 @@ function doLogin(username, password) {
                 var result = xhr.responseText;
                
                 if (isNaN(result)) {
-                    //$("#error").show();
                     document.getElementById('error').innerHTML=result; 
-                    //$("#login-block").hide();
                 }else if (result=="") {
                     $("#error").text("Ajax request returned no data");
                 } else {
                     $("#login-block").hide();
                     $("#error").hide();
-                    $("#homepage").fadeIn(2500);
+                    $("#homepage").fadeIn(1150);
                     displayUser();
                     isAdmin();
                     initInbox();
@@ -96,9 +118,10 @@ function doLogin(username, password) {
             .fail(userLoginFail);
 }
 
+//checks if user who just logged in is admin user. Admin user has username=admin and id=1
 function isAdmin() {
         var checkAdmin = $.ajax({
-        url: "who.php",
+        url: "ajax/who.php",
         type: "POST",
         data: {
             admin: "check"
@@ -115,9 +138,10 @@ function isAdmin() {
             });
 }
 
+//loads the currently logged in usere's name on the homepage 
 function displayUser() {
         var userName = $.ajax({
-        url: "who.php",
+        url: "ajax/who.php",
         type: "POST",
         data: {
             admin: "no"
@@ -130,10 +154,12 @@ function displayUser() {
                               
             });
 }
+
+//loads the logged in user's 10 most recent messages as well as displays a message informing the user of any new messages
 function initInbox()
 {
     var rxml = $.ajax({
-        url: "inbox.php",
+        url: "ajax/inbox.php",
         type: "POST",
         data: {
             isRead: "no",
@@ -148,14 +174,15 @@ function initInbox()
                 if (newMsgs.length==0) {
                     document.getElementById('newMsg').innerHTML = "You have no new messages!";
                 } else if (newMsgs.length==1){
-                    document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Message!";
+                    document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Message! <img alt=\"new message\" src=\"external/email-alert.png\" >";
                 } else {
-                    document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Messages!";
+                    document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Messages! <img alt=\"new message\" src=\"external/email-alert.png\" >";
                 }
                 //console.log(newMsgs.length);
             });
 }
 
+//flags messages as read when a users clicks on a message and updates corresponding unread message count
 function read(id) {
     $("#body"+id).fadeToggle(1000);
     $("#body").fadeIn(1000);
@@ -164,12 +191,12 @@ function read(id) {
     if (newMsgs.length==0) {
         document.getElementById('newMsg').innerHTML = "You have no new messages!";
     } else if (newMsgs.length==1){
-        document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Message!"; 
+        document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Message! <img alt=\"new message\" src=\"external/email-alert.png\">"; 
     } else {
-        document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Messages!";
+        document.getElementById('newMsg').innerHTML = "You have <span class=\"numMsg\">"+newMsgs.length+" unread</span> Messages! <img alt=\"new message\" src=\"external/email-alert.png\">";
     }
         $.ajax({
-        url: "inbox.php",
+        url: "ajax/inbox.php",
         type: "POST",
         data: {
             isRead: "yes",
@@ -188,9 +215,10 @@ function userLoginFail() {
 
 function regUser() {
     $("#homepage").hide();
-    $("#reg-block").fadeIn(2500);
+    $("#reg-block").fadeIn(1150);
 }
 
+//checks for empty fields on the register user page. Also makes sure the same password was entered twice
 function checkRegister() {
     
     var fname = document.forms["registerForm"]["fname"],
@@ -235,6 +263,9 @@ function checkRegister() {
     }
 }
 
+/*checks the make sure password is at least 8 characters long, 
+*has at least one uppercase, one lowercase and one digit. no sybols/non-alphanumeric characters allowed
+*/
 function checkPass(pass){
 
 	var digit = /\d+/;
@@ -243,24 +274,21 @@ function checkPass(pass){
 	
 	if(!digit.test(pass)){
             return false;
-            //alert('Invalid Password\n Password should contain at least one digit');
 	} else if(!upper.test(pass)){
             return false;
-            //alert('Invalid Password\n Password should contain at least one capital letter');
 	} else if(!lower.test(pass)){
             return false;
-            //alert('Invalid Password\n Password should contain at least one letter');
 	} else if(pass.length < 8 ){
             return false;
-            //alert('Invalid Password Length\nEnsure that your password is 8 characters or greater');
 	} else {
             return true;
 	}
 }
 
+//actual registration function
 function doRegister(fname, lname, username, password) {
     var xhr = $.ajax({
-        url: "register.php",
+        url: "ajax/register.php",
         type: "POST",
         data: {
                 firstname: fname,
@@ -279,7 +307,7 @@ function doRegister(fname, lname, username, password) {
                 }else if (result=="") {
                     $("#error").text("Ajax request returned no data");
                 } else {
-                    $("#homepage").fadeIn(2500);
+                    $("#homepage").fadeIn(1150);
                     $("#reg-block").hide();
                     $("#error").hide();
                     alert("User successfully created!");
@@ -288,7 +316,13 @@ function doRegister(fname, lname, username, password) {
     console.log(xhr);
 }
 
+function newMsg() {
+    $("#homepage").fadeOut(500);
+    $("#compose").fadeIn(1150);
+};
 
+
+//checks for empty fields when composing new message
 function checkMessage() {
     var subject = document.forms['messageForm']['msg-subject'],
         recipients = document.forms['messageForm']['msg-recipients'],
@@ -318,9 +352,10 @@ function checkMessage() {
     }
 }
 
+//sends message
 function doSend(subject, recipients, body) {
     var xrh = $.ajax({
-        url: "message.php",
+        url: "ajax/message.php",
         type: "POST",
         data: {
                 subject: subject,
@@ -341,7 +376,7 @@ function doSend(subject, recipients, body) {
                 } else {
                     $("#compose").hide();
                     $("#error").hide();
-                    $("#homepage").fadeIn(2500);
+                    $("#homepage").fadeIn(1150);
                     alert("Message successfully sent!");
                 }                
             });

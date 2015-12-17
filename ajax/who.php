@@ -1,4 +1,11 @@
 <?php
+/*
+ *this file retrieves the currently logged in user's First and lastnames 
+ *and checks if the user is an admin 
+ * 
+ * 
+ */
+
 include 'connect.php';
 session_start();
 
@@ -20,4 +27,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($checkAdmin) && !empty($check
      }
 
 
-?>
+

@@ -1,4 +1,5 @@
 <?php
+/*this file sends messages to users. inject messages into database*/
 
 include 'connect.php';
 

@@ -37,25 +37,19 @@ body {
     margin: 20px auto;
 }
 
-.admin-btn {
-    /*width: 100px;*/
-    height: 40px;
-    background: #ff656c;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #e15960;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 14px;
-    font-family: Montserrat, sans-serif;
-    outline: none;
-    cursor: pointer;
+input.image-btn {
+    height: 45px !important; 
+    width: 50px !important;
+    border-radius: 5px !important;
+    padding: 0px !important;
+    background: none;
+    border: 0px !important;
+    float: right;
+    
 }
 
-.admin-btn:hover {
-    background: #ff7b81;
+input.image-btn:hover {
+    height: 40px !important;
 }
 
 .login-block h1 {
@@ -103,12 +97,12 @@ body {
 }
 
 .login-block input#username {
-    background: #fff url('id.png') 20px top no-repeat;
+    background: #fff url('external/id.png') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
 .login-block input#username:focus {
-    background: #fff url('id.png') 20px bottom no-repeat;
+    background: #fff url('external/id.png') 20px bottom no-repeat;
     background-size: 16px 80px;
 }
 
@@ -118,6 +112,26 @@ body {
 }
 
 .login-block input#password:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#rusername {
+    background: #fff url('id.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#rusername:focus {
+    background: #fff url('id.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#rpassword {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#rpassword:focus {
     background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
     background-size: 16px 80px;
 }
@@ -134,6 +148,11 @@ body {
 
 .login-block input#msg-recipients {
     margin-bottom: 0px;
+    padding: 0px 20px 0px 10px;
+}
+
+.login-block input#msg-subject {
+    padding: 0px 20px 0px 10px;
 }
 
 textarea {

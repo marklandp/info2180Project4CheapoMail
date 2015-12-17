@@ -33,26 +33,27 @@
         <div id="homepage" class="login-block">
             <p id="user" class="user"></p>
             <p id="newMsg" class="user"></p>
+            <input type="image" id="new-btn" class="image-btn" alt="compose email" title="Compose Email" src="external/compose.png">
+            <input type="image" id="sync" class="image-btn" alt="sync messages" title="Sync Messages" src="external/sync.png">
+            <input type="image" id="create-btn" class="image-btn" alt="create user" title="Create User" src="external/new-user.png">
             <div id="inbox">
             </div>
-            <button id="new-btn" class="admin-btn">New Message</button>
-            <button id="sync" class="admin-btn">Sync Messages</button>
-            <button id="create-btn" class="admin-btn">Create User</button><br /><br />
+            <br /><br />
             <input type="button" value="Sign Out" id="logout-btn" class="input-btn">
         </div>
         <div id="compose" class="login-block">
                 <form role="form" id="messageForm" action="" method="POST">
                     <fieldset>
                     <legend>Compose Message</legend>
-                        <input type="text" id="msg-subject" class="form-control" value="" placeholder="Subject">  
-                        <input type="text" id="msg-recipients" class="form-control" value="" placeholder="Recipients"> <p id="delimiter">Separate each username with a semicolon (';')</p>
-                        <textarea id="msg-body" class="form-control" rows="5" col="20" placeholder="Type message here..."></textarea>
+                        <input type="text" id="msg-subject" value="" placeholder="Subject">  
+                        <input type="text" id="msg-recipients" value="" placeholder="Recipients"> <p id="delimiter">Separate each username with a semicolon (';')</p>
+                        <textarea id="msg-body"  rows="5" col="20" placeholder="Type message here..."></textarea>
                         <!--<button id="send-btn">Send</button>-->
                         <input type="button" value="Send" id="send-btn" class="input-btn">
                     </fieldset>
                 </form>
         </div><!-- end of homepage div-->
-        <div id="error" class="sections" class="col-md-6">
+        <div id="error">
         </div>
         <p id="footer">&copy;2015 | 620011825, 620075629, 620053626</p>
         </div><!-- end of main -->

@@ -1,4 +1,5 @@
 <?php
+/*this file inserts new users into database*/
 
 include 'connect.php';
 

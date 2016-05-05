@@ -1,7 +1,7 @@
 <?php
 
-$host = "http://www.db4free.net";
+$host = "http://www.db4free.net:3306/cheapomail";
 $dbusername = "cheapoadmin";
-$db = "cheapomail";
 $dbpassword = "cheapoadmin";
+$db = "cheapomail";
 ?>
